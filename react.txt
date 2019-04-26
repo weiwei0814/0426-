@@ -1,0 +1,101 @@
+﻿安装
+准备
+ node 版本 8.10 以上 
+node -v查看node 版本
+
+
+$ cnpm install -g create-react-app   
+安装环境
+$ create-react-app my-app            
+创建一个项目，并命名
+$ cd my-app/                         
+进入项目
+$ npm start                          
+启动项目
+
+
+
+jsx js+xml(标签语法，类似于html)
+jsx javascript的拓展语言，完全是javascrip内部实现的
+jsx 只能又一个父标签
+jsx 可以使用{表达式}
+JSX 代码的外面扩上一个小括号
+jsx 添加样式 使用className
+
+组件
+
+1、函数组件（无状态组件） 
+
+2、类组件（有状态组件）
+注意：组件名称必须以大写字母开头。
+
+
+组件通信
+子传父
+子组件 使用this.props.事件名（参数）
+
+父组件 <子组件 事件名＝｛处理函数｝>
+父组件的处理函数中的参数 就是子组件传递过来的数据
+
+vue 
+在使用  子组件上自定义一个事件   <ComA :on-show={xxx}/>  
+       
+子组件中     
+使用 $emit('on-show',值)
+
+
+多层嵌套
+引入 prop-types
+父组件 
+    
+声明 childContextTypes  进行数据验证
+    
+声明 getChildContext 提供数据和方法 供下级组件使用
+子组件
+    
+声明contextTypes 进行数据验证
+    
+在事件中 使用this.context.方法名（上级组件 childContextTypes中声明的方法 ）
+
+
+兄弟
+cnpm install events
+引入events
+
+1、创建 event.js文件
+import { EventEmitter } from 'events';
+export default new EventEmitter(); 
+导出 emitter对象
+A 组件接受数据  使用emitter.addListener（‘changeMessage’） 注册一个事件      
+B 组件发送数据  使用emitter.emit('changeMessage', '数据');
+
+
+2、发送数据的组件 
+引入emitter对象
+使用 emitter.emit('changeMessage', 'message');  通过changeMessage 发送一个数据message
+
+
+3、在接收数据的组件中
+引入emitter对象
+注册接受函数  使用  emitter.addListener('changeMessage',function(message){ message参数就是传递过来的数据}) 
+
+
+children
+在组件中获得 使用组件时候在组件中以任何形式(标签元素)传递过来的数据 和slot 很相似
+
+
+受控组件和非受控组件
+受控组件 input中的value值通过state值获取，onChange事件改变state中的value值，input中的value值又从state中获取
+非受控  非受控也就意味着我可以不需要设置它的state属性，而通过ref来操作真实的DOM。
+
+
+
+作业需求
+
+
+导航 关注高 销量高 价格高  封装一个组件
+数据列表渲染封装一个组件
+
+
+cnpm install redux      下载redux
+cnpm install react-redux     搭建redux
